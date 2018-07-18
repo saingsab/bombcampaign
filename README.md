@@ -1,10 +1,9 @@
-# bombcampaign
+# Bombcampaign
 
-A Clojure library designed to ... well, that part is up to you.
-
+A Clojure Web service for sending email for your marketing purpose.
+Thanks to https://www.rosettacode.org/wiki/Send_email#Clojure
 ## Usage
-
-FIXME
+Working on!
 
 ## License
 
