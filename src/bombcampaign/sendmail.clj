@@ -1,12 +1,21 @@
 (ns bombcampaign.sendmail
     (require [postal.core :refer [send-message]]))
  
-(send-message {:host "smtp.gmail.com"
-               :ssl true
-               :user your_username
-               :pass your_password}
-              {:from "you@yourdomain.com"
-               :to ["your_friend@example.com"]
-               :cc ["bob@builder.com" "dora@explorer.com"]
-               :subject "Yo"
-               :body "Testing."})
+;  provie the SMTP 
+(def smtp "smtp.gmail.com")
+
+; Credential
+(def _username "saing.sab@gmail.com")
+(def _password "??????????????????????????????")
+
+(defn send-mail! [mail-from mail-to mail-cc mail-subject mail-body]
+    (send-message { :host smtp
+                    :ssl true
+                    :user _username
+                    :pass _password }
+                  { :from mail-from
+                    :to mail-to
+                    :cc mail-cc
+                    :subject mail-subject
+                    :body mail-body}))
+

@@ -4,4 +4,7 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [com.draines/postal "2.0.2"]])
+                 [com.draines/postal "2.0.2"]
+                 [org.clojure/data.csv "0.1.4"]
+                 [csv-map "0.1.2"]
+                 [clojure-csv/clojure-csv "1.3.2"]])
