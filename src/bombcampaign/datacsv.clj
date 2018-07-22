@@ -16,8 +16,8 @@
 (def content (nth (parse-csv (slurp file-contents)) 0))
 
 (defn push-email! []
-   (def mailling (atom 0))
-   (while ( < @mailling 2)
+   (def mailling (atom (read-string (get mailconfig "start-send"))))
+   (while ( < @mailling (read-string (get mailconfig "stop-send")))
       (do
          (def person (nth (parse-csv (slurp file-contact)) @mailling))
          (def _name (get person "name"))

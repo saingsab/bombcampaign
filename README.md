@@ -32,6 +32,6 @@ Note*
 
 ## License
 
-Copyright © 2018 Mr Ayoung
+Copyright © 2018 Mr.Ayoung
 
 Distributed under Free License.
