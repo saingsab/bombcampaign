@@ -46,6 +46,7 @@
              
              (catch Exception e
                 (with-open [wrtr (io/writer _logfile :append true)]
-                    (.write wrtr (str "\n" "ERROR : " _mail-to " " (.getMessage e) " AT : " (t/to-time-zone (t/now) (t/time-zone-for-offset +7)))))))
+                    (.write wrtr (str "\n" "ERROR : " _mail-to " " (.getMessage e) " AT : " (t/to-time-zone (t/now) (t/time-zone-for-offset +7))))
+                )))
          
          (swap! mailling inc))))

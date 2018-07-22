@@ -1,3 +1,7 @@
 (ns bombcampaign.core
     (require [bombcampaign.datacsv :as datacsv]
-             [bombcampaign.sendmail :as sendmail]))
+             [bombcampaign.sendmail :as sendmail])
+    (:gen-class))
+
+(defn -main []
+  (datacsv/push-email!))
