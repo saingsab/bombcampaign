@@ -13,20 +13,18 @@ To Edit e-mail content go to data/content.csv
 ```
 lein deps
 ```
-
----
 2) Compile Application with the following commend: 
----
+```
 lein compile
----
+```
 3) Build a Java Application with the following commend: 
----
+```
 lein uberjar
----
+```
 4) Run Application
----
+```
 java -jar bombcampaign-0.1.0-SNAPSHOT-standalone.jar
-----
+```
 
 Note* 
 - Make sure that the data directory is there with bombcampaign-0.1.0-SNAPSHOT-standalone.jar
