@@ -10,7 +10,8 @@ To add the e-mail listing go to data/contact.csv
 To Edit e-mail content go to data/content.csv
 
 1) Download the dependencies with the following commend: 
-```lein deps
+```
+lein deps
 ```
 
 ---
