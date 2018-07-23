@@ -50,7 +50,6 @@
                     (.write wrtr (str "\n" "ERROR : " _mail-to " " (.getMessage e) " AT : " (t/to-time-zone (t/now) (t/time-zone-for-offset +7)))))))
                 (swap! mailling inc))))
 
-
 (defn remove-contact [filepath start nskip]
   (with-open [rdr (io/reader filepath)]
     (with-open [wrt (io/writer (str filepath ".tmp"))]
@@ -65,3 +64,6 @@
           (when (pos? n)
             (println "WARN: You are trying to remove lines beyond EOF"))))))
   (.renameTo (io/file (str filepath ".tmp")) (io/file filepath)))
+
+  (defn remove! []
+    (remove-contact file-contact (+ 2 (read-string (get mailconfig "start-send"))) (+ 1 (read-string (get mailconfig "stop-send")))))

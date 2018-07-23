@@ -5,4 +5,5 @@
 
 (defn -main []
   (datacsv/push-email!)
-  (datacsv/remove-contact file-contact 2 199))
+;   (datacsv/remove-contact file-contact 2 199)
+  )
