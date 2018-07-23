@@ -31,24 +31,31 @@
          (def _paragraph1 (get content "paragraph1"))
          (def _paragraph2 (get content "paragraph2"))
          (def _paragraph3 (get content "paragraph3"))
-
-         (try 
-            (sendmail/send-mail! 
-                        smtp
-                        _username
-                        _password
-                        _mail-from
-                        _mail-to
-                        _mail-cc
-                        _subject
-                        (str "Dear " _name "\n" "\n" _paragraph1 "\n" "\n" _paragraph2 "\n" "\n" _paragraph3)) 
-             (with-open [wrtr (io/writer _logfile :append true)]
-                (.write wrtr (str "\n" "SEND : " _mail-to " AT: " (t/to-time-zone (t/now) (t/time-zone-for-offset +7)) )))
-             
-             (catch Exception e
-                (with-open [wrtr (io/writer _logfile :append true)]
-                    (.write wrtr (str "\n" "ERROR : " _mail-to " " (.getMessage e) " AT : " (t/to-time-zone (t/now) (t/time-zone-for-offset +7)))))))
-                (swap! mailling inc))))
+         
+         (if (= "" (get person "email")) 
+              ; When the file is no contact
+              (with-open [wrtr (io/writer _logfile :append true)]
+                (.write wrtr (str "\n" "ERROR : " "Either your file is empty or incorrect format" " AT: " (t/to-time-zone (t/now) (t/time-zone-for-offset +7)))))
+              
+              ; There is an contact in the file
+              (try 
+                          (sendmail/send-mail! 
+                                      smtp
+                                      _username
+                                      _password
+                                      _mail-from
+                                      _mail-to
+                                      _mail-cc
+                                      _subject
+                                      (str "Dear " _name "\n" "\n" _paragraph1 "\n" "\n" _paragraph2 "\n" "\n" _paragraph3)) 
+                          (with-open [wrtr (io/writer _logfile :append true)]
+                              (.write wrtr (str "\n" "SEND : " _mail-to " AT: " (t/to-time-zone (t/now) (t/time-zone-for-offset +7)) )))
+                          
+                          (catch Exception e
+                              (with-open [wrtr (io/writer _logfile :append true)]
+                                  (.write wrtr (str "\n" "ERROR : " _mail-to " " (.getMessage e) " AT : " (t/to-time-zone (t/now) (t/time-zone-for-offset +7))))))))
+               
+      (swap! mailling inc))))
 
 (defn remove-contact [filepath start nskip]
   (with-open [rdr (io/reader filepath)]
