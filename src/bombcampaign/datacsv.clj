@@ -3,7 +3,8 @@
     (require [bombcampaign.sendmail :as sendmail]
              [clj-time.core :as t]
              [clojure.data.csv :as csv]
-             [clojure.java.io :as io]))
+             [clojure.java.io :as io]
+             [clojure.string :as str]))
 
 (def file-contact "data/contact.csv")
 (def file-mail "data/config.csv")
@@ -46,7 +47,21 @@
              
              (catch Exception e
                 (with-open [wrtr (io/writer _logfile :append true)]
-                    (.write wrtr (str "\n" "ERROR : " _mail-to " " (.getMessage e) " AT : " (t/to-time-zone (t/now) (t/time-zone-for-offset +7))))
-                )))
-         
-         (swap! mailling inc))))
+                    (.write wrtr (str "\n" "ERROR : " _mail-to " " (.getMessage e) " AT : " (t/to-time-zone (t/now) (t/time-zone-for-offset +7)))))))
+                (swap! mailling inc))))
+
+
+(defn remove-contact [filepath start nskip]
+  (with-open [rdr (io/reader filepath)]
+    (with-open [wrt (io/writer (str filepath ".tmp"))]
+      (loop [s start n nskip]
+        (if-let [line (.readLine rdr)]
+          (cond
+            (> s 1)  (do (doto wrt (.write line) (.newLine))
+                         (recur (dec s) n))
+            (pos? n) (recur s (dec n))
+            :else    (do (doto wrt (.write line) (.newLine))
+                         (recur s n)))
+          (when (pos? n)
+            (println "WARN: You are trying to remove lines beyond EOF"))))))
+  (.renameTo (io/file (str filepath ".tmp")) (io/file filepath)))
