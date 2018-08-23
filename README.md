@@ -1,7 +1,7 @@
 # Bombcampaign
 
 A Clojure Web service for sending email for your marketing purpose.
-Thanks to https://www.rosettacode.org/wiki/Send_email#Clojure
+Using Postal wraps JavaMail to make sending emails simple and platform independent.
 
 Tobe added more!
 ## Usage
