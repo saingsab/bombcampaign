@@ -27,7 +27,7 @@
       (def _username (get mailconfig "username"))
       (def _password (get mailconfig "password"))
       (def _mail-from (get mailconfig "mail-from"))
-      (def _subject (get mailconfig "mail-subjec"))
+      (def _subject (get mailconfig "mail-subject"))
       (def _mail-cc (get mailconfig "mail-cc"))
       (def _paragraph1 (get content "paragraph1"))
       (def _paragraph2 (get content "paragraph2"))
