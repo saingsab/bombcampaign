@@ -1,7 +1,7 @@
 # Bombcampaign
 
 A sigal Java application writen Clojure for sending mask email for your general purpose.
-This application using [Postal](https://github.com/drewr/postal) is a library for constructing and sending RFC822-compliant Internet email messages. and [clojure.data.csv](https://github.com/clojure/data.csv) A CSV reader/writer to/from Clojure data structures to interact with data.
+This application using [Postal](https://github.com/drewr/postal) is a library for constructing and sending RFC822-compliant Internet email messages. and [Clojure v1.10.1](https://clojure.github.io/clojure/clojure.java.io-api.html) To reader/writer to/from Clojure data structures to interact with text file.
 
 ## Usage
 ### I Build
@@ -36,7 +36,7 @@ Bombcampaign running on JVM so before runing an application need to install Java
 Download the [Official Release](https://github.com/mrayoung/bombcampaign/releases)
 
 3) Configure
-There are three files in side data folder. config.csv is where you confige SMTP server. In contact.csv is list of email who you want to send your email to. And content.csv is your email body.
+There are three files in side data folder. config.txt is where you confige SMTP server. In contact.txt is list of email who you want to send your email to. And content.txt is your email body.
 
 4) Excute
 Double click on bombcampaign-0.1.0-SNAPSHOT-standalone.jar 
@@ -44,6 +44,10 @@ Double click on bombcampaign-0.1.0-SNAPSHOT-standalone.jar
 5) Verify 
 The application log at data/sendmaillog/mailinglog.log so all the email and error log will show here.
 
+For realtime monitor you can use 
+```
+tail -f data/sendmaillog/mailinglog.log
+```
 
 Note* 
 - Make sure that the data directory is there with bombcampaign-0.1.0-SNAPSHOT-standalone.jar

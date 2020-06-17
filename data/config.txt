@@ -1,0 +1,1 @@
+replace user namehere,replace password here,email-smtp.us-west-2.amazonaws.com,replace mail from,sending from,thi is subject,1
