@@ -54,7 +54,7 @@ Note*
 - To verify the sending email and error log go to data/sendmaillog/mailinglog.log
 
 Issues report to developer [here](https://github.com/mrayoung/bombcampaign/issues)
-
+Direct report to saing@procambodia.com
 ## License
 
 Copyright © 2020 Mr.Ayoung
