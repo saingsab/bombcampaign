@@ -20,5 +20,5 @@
                             :content (str mail-content)}]})
     (logs/write-log! (str "SUCCE : " mail-to))
     (catch Exception ex
-      (logs/write-log! (str "ERROR : "(.getMessage ex))))))
+      (logs/write-log! (str "ERROR : FN send-mail! " ex)))))
                     

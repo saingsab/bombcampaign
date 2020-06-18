@@ -40,5 +40,5 @@
                 (remove-contact! contact 0 1)
 
                 (catch Exception ex
-                    (logs/write-log! (str "ERROR : "(ex)))))
+                    (logs/write-log! (str "ERROR : FN send-with-thread "(ex)))))
             (swap! i inc))))
